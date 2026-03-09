@@ -4,7 +4,7 @@ from datetime import date
 from core.domain_error import (
     InvalidAmountError,
     InvalidExpenseDateError,
-    EmptyTitleError
+    EmptyTitleError,
 )
 
 
@@ -22,7 +22,7 @@ class Expense:
         """
         if not self.title or not self.title.strip():
             raise EmptyTitleError("El título no puede estar vacío")
-        
+
         if self.amount <= 0:
             raise InvalidAmountError("El importe debe ser mayor que 0")
 

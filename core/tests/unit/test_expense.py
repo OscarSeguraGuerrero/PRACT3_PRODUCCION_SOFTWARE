@@ -5,7 +5,7 @@ from core.expense import Expense
 from core.domain_error import (
     EmptyTitleError,
     InvalidAmountError,
-    InvalidExpenseDateError
+    InvalidExpenseDateError,
 )
 
 
@@ -39,7 +39,13 @@ def test_negative_amount_raises_error():
     - Revisar si esta restricción ya está implementada en la clase Expense.
     """
     with pytest.raises(InvalidAmountError):
-        Expense(id=1, title="Libro", amount=-5, description="Cantidad negativa no permitida", expense_date=date.today())
+        Expense(
+            id=1,
+            title="Libro",
+            amount=-5,
+            description="Cantidad negativa no permitida",
+            expense_date=date.today(),
+        )
 
 
 def test_future_date_raises_error():
@@ -56,4 +62,10 @@ def test_future_date_raises_error():
     """
     tomorrow = date.today() + timedelta(days=1)
     with pytest.raises(InvalidExpenseDateError):
-        Expense(id=1, title="Libro", amount=10, description="Vengo del futuro", expense_date=tomorrow)
+        Expense(
+            id=1,
+            title="Libro",
+            amount=10,
+            description="Vengo del futuro",
+            expense_date=tomorrow,
+        )

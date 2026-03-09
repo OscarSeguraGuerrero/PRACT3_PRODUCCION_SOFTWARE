@@ -94,14 +94,13 @@ def test_create_multiple_expenses_and_list():
     service.create_expense("Pan", 3, "Mercado", date.today())
     service.create_expense("Leche", 4, "Supermercado", date.today())
 
-    expenses = service.list_expenses()   
+    expenses = service.list_expenses()
 
     titles = [expense.title for expense in expenses]
 
     assert len(expenses) == 2
     assert "Pan" in titles
     assert "Leche" in titles
-
 
 
 def test_remove_expense_reduces_total():
